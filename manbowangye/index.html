@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>漫播网页版-广播剧在线听_有声漫画推荐_和APP区别</title>
+  <meta name="description" content="漫播网页版提供广播剧、有声漫画与配音节目在线收听，适合通勤或睡前放松。页面整理热门剧集、分类筛选与更新动态，帮你在网页端快速找到想听的内容。">
+  <meta name="keywords" content="广播剧在线听,有声漫画推荐,配音节目,网页收听,音频内容">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236b4c9a'/%3E%3Cpath d='M10 11h3v10h-3zm4 3h3v7h-3zm4-6h3v13h-3zm4 4h3v9h-3z' fill='%23f4eaff'/%3E%3C/svg%3E">
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+  <style>
+    /* ----- 设计系统变量 ----- */
+    :root {
+      --bg: #f8f5ff;
+      --surface: #ffffff;
+      --surface-2: #f2edfd;
+      --border: #ddd3ef;
+      --border-light: #ede7f8;
+      --text: #1e1a2b;
+      --text-secondary: #4a3f5e;
+      --text-muted: #7a6d8f;
+      --primary: #6b4c9a;
+      --primary-light: #9b7fc4;
+      --primary-dark: #4a2f73;
+      --accent: #e8b84b;
+      --accent-soft: #fef6e6;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 16px rgba(74, 47, 115, 0.08);
+      --shadow-sm: 0 2px 8px rgba(74, 47, 115, 0.06);
+      --font: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      --header-h: 64px;
+      --announce-h: 38px;
+      --anchor-offset: calc(var(--header-h) + var(--announce-h) + 16px);
+      --max-w: 1360px;
+      --left-w: 178px;
+      --right-w: 248px;
+      --gap: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--anchor-offset);
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ----- 吸顶公告条 ----- */
+    .announcement {
+      background: var(--primary-dark);
+      color: #f0e6ff;
+      font-size: 13px;
+      height: var(--announce-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      letter-spacing: 0.02em;
+    }
+    .announcement .tag {
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 11px;
+      padding: 1px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ----- 吸顶页头 ----- */
+    .header {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: var(--announce-h);
+      z-index: 99;
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo svg { display: block; }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary-dark);
+    }
+    .header-nav {
+      display: flex;
+      gap: 4px;
+      margin-left: 12px;
+    }
+    .header-nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .header-nav a:hover { background: var(--surface-2); color: var(--primary); }
+    .header-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--surface-2);
+      border-radius: 20px;
+      padding: 0 12px;
+      height: 36px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus-within { border-color: var(--primary-light); background: #fff; }
+    .search-box input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      width: 140px;
+      outline: none;
+      font-family: var(--font);
+      color: var(--text);
+    }
+    .search-box input::placeholder { color: var(--text-muted); }
+    .search-box button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text-muted);
+      display: flex;
+    }
+    .btn-outline {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      border: 1.5px solid var(--primary-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      transition: background 0.15s;
+    }
+    .btn-outline:hover { background: var(--surface-2); }
+
+    /* ----- 首屏 ----- */
+    .hero {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 40px 24px 32px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+    .hero-content .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 24px;
+      line-height: 1.75;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-badges span {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--primary-dark);
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      box-shadow: 0 4px 14px rgba(107, 76, 154, 0.3);
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--primary-light); }
+
+    /* 首屏视觉 */
+    .hero-visual {
+      position: relative;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual .disc {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--primary-light), var(--accent-soft), var(--primary-light), var(--accent-soft), var(--primary-light));
+      opacity: 0.35;
+      position: absolute;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-visual .card-stack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-visual .mini-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 260px;
+      border-left: 4px solid var(--primary-light);
+      font-size: 13px;
+    }
+    .hero-visual .mini-card .dot {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .hero-visual .mini-card strong { display: block; color: var(--text); font-size: 13px; }
+    .hero-visual .mini-card small { color: var(--text-muted); font-size: 11px; }
+
+    /* ----- 三栏主容器 ----- */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px 40px;
+      display: grid;
+      grid-template-columns: var(--left-w) 1fr var(--right-w);
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    /* ----- 左栏 ----- */
+    .sidebar-left {
+      position: sticky;
+      top: calc(var(--announce-h) + var(--header-h) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sidebar-block {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+    .sidebar-block h3 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+    .sidebar-nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 7px 10px;
+      border-radius: 8px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .sidebar-nav a:hover { background: var(--surface-2); color: var(--primary); }
+    .sidebar-nav a.active { background: var(--primary); color: #fff; font-weight: 600; }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag-cloud a {
+      text-decoration: none;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      transition: background 0.12s, color 0.12s;
+    }
+    .tag-cloud a:hover { background: var(--primary-light); color: #fff; }
+
+    /* ----- 中栏 ----- */
+    .main-col { min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+    .section-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .section-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: -0.01em;
+    }
+    .section-header .more-link {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .section-header .more-link:hover { text-decoration: underline; }
+
+    /* 介绍 */
+    .intro-text p { margin-bottom: 14px; font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
+    .intro-text p:last-child { margin-bottom: 0; }
+
+    /* 热门内容卡片 */
+    .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .content-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      background: #fefdff;
+    }
+    .content-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-sm); }
+    .content-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .card-tags span {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: var(--surface-2);
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+    .content-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    .card-meta { display: flex; gap: 12px; font-size: 11.5px; color: var(--text-muted); }
+    .card-meta .hot { color: #d9822b; font-weight: 600; }
+
+    /* 最新更新列表 */
+    .update-list { display: flex; flex-direction: column; gap: 0; }
+    .update-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 14px;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-item .time-badge {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .update-item strong { color: var(--text); font-weight: 600; }
+    .update-item span { color: var(--text-muted); font-size: 13px; }
+
+    /* 分类入口 */
+    .category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .category-item {
+      text-decoration: none;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 14px 12px;
+      text-align: center;
+      border: 1px solid transparent;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .category-item:hover { border-color: var(--primary-light); background: #fff; }
+    .category-item .cat-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+    .category-item .cat-name { font-size: 13px; font-weight: 600; color: var(--primary-dark); }
+    .category-item .cat-count { font-size: 11px; color: var(--text-muted); }
+
+    /* 深度解析 */
+    .deep-dive h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 22px 0 10px;
+    }
+    .deep-dive h3:first-child { margin-top: 0; }
+    .deep-dive p { font-size: 14.5px; color: var(--text-secondary); line-height: 1.85; margin-bottom: 12px; }
+    .deep-dive ul { margin: 8px 0 16px 18px; font-size: 14.5px; color: var(--text-secondary); line-height: 1.85; }
+    .deep-dive li { margin-bottom: 6px; }
+
+    /* 体验指南 步骤 */
+    .steps { display: flex; flex-direction: column; gap: 14px; }
+    .step-item { display: flex; gap: 14px; align-items: flex-start; }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body strong { display: block; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .step-body p { font-size: 13.5px; color: var(--text-muted); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-list details {
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .faq-list details[open] { border-color: var(--primary-light); background: #fff; }
+    .faq-list summary {
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: var(--radius-sm);
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: '+';
+      font-size: 18px;
+      color: var(--primary-light);
+      font-weight: 400;
+      margin-left: 12px;
+    }
+    .faq-list details[open] summary::after { content: '−'; }
+    .faq-list .faq-answer { padding: 0 18px 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
+
+    /* 评论 */
+    .comment-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .comment-card {
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+    .comment-card .comment-user { font-weight: 600; color: var(--primary-dark); margin-bottom: 4px; font-size: 12.5px; }
+    .comment-card .comment-text { color: var(--text-secondary); line-height: 1.6; }
+
+    /* 资讯 */
+    .news-list { display: flex; flex-direction: column; gap: 14px; }
+    .news-item { display: flex; gap: 14px; align-items: baseline; }
+    .news-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      background: var(--surface-2);
+      padding: 2px 8px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .news-body strong { display: block; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+    .news-body p { font-size: 13px; color: var(--text-muted); }
+
+    /* 相关推荐 标签索引 */
+    .recommend-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .recommend-tags a {
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .recommend-tags a:hover { border-color: var(--primary-light); background: #fff; color: var(--primary-dark); }
+
+    /* 精选 / 口碑 */
+    .quote-panel {
+      background: linear-gradient(135deg, var(--primary-dark), #3b2361);
+      border-radius: var(--radius);
+      padding: 28px;
+      color: #f0e6ff;
+    }
+    .quote-panel blockquote { font-size: 16px; line-height: 1.7; margin-bottom: 12px; font-style: italic; }
+    .quote-panel cite { font-size: 13px; opacity: 0.8; font-style: normal; }
+
+    /* ----- 右栏 ----- */
+    .sidebar-right {
+      position: sticky;
+      top: calc(var(--announce-h) + var(--header-h) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: 2px; }
+    .toc-list a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: block;
+      padding: 5px 8px;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .toc-list a:hover { background: var(--surface-2); border-left-color: var(--primary-light); color: var(--primary-dark); }
+
+    .hot-list { list-style: none; counter-reset: hot; }
+    .hot-list li {
+      counter-increment: hot;
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 13px;
+    }
+    .hot-list li:last-child { border-bottom: none; }
+    .hot-list li::before {
+      content: counter(hot);
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--primary-light);
+      width: 18px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .hot-list a { text-decoration: none; color: var(--text-secondary); }
+    .hot-list a:hover { color: var(--primary); }
+
+    .extend-links { display: flex; flex-direction: column; gap: 6px; }
+    .extend-links a {
+      text-decoration: none;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+    .extend-links a:hover { color: var(--primary); }
+    .extend-links a span { color: var(--text-muted); font-size: 11px; }
+
+    /* ----- 页尾 ----- */
+    .footer {
+      background: var(--primary-dark);
+      color: #d9ccee;
+      margin-top: 20px;
+      padding: 40px 24px 24px;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-brand .logo-text { color: #fff; font-size: 22px; margin-bottom: 10px; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; opacity: 0.75; max-width: 280px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 12px; letter-spacing: 0.03em; }
+    .footer-col a { display: block; text-decoration: none; color: #d9ccee; font-size: 13px; padding: 4px 0; opacity: 0.8; }
+    .footer-col a:hover { opacity: 1; color: #fff; }
+    .footer-bottom {
+      max-width: var(--max-w);
+      margin: 28px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 12px;
+      opacity: 0.6;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 无结果提示 */
+    .no-result {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+    }
+    .no-result.show { display: block; }
+
+    /* ----- 响应式 ----- */
+    @media (max-width: 1100px) {
+      .container { grid-template-columns: 1fr; }
+      .sidebar-left, .sidebar-right { position: static; }
+      .sidebar-left { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .sidebar-right { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .header-nav { display: none; }
+      .container { padding: 0 12px 24px; }
+      .section-card { padding: 18px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .comment-grid { grid-template-columns: 1fr; }
+      .sidebar-left { grid-template-columns: 1fr; }
+      .sidebar-right { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .search-box input { width: 90px; }
+      .hero { padding: 24px 12px; }
+      .update-item { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announcement">
+    <span class="tag">上新</span>
+    《夜航星》广播剧第二季·第8集已更新，网页端可直接收听
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/#top" class="logo" aria-label="漫播网页版首页">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#6b4c9a"/>
+          <path d="M10 11h3v10h-3zm4 3h3v7h-3zm4-6h3v13h-3zm4 4h3v9h-3z" fill="#f4eaff"/>
+        </svg>
+        <span class="logo-text">漫播网页版</span>
+      </a>
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="/#intro">关于</a>
+        <a href="/#hot">热门推荐</a>
+        <a href="/#updates">更新动态</a>
+        <a href="/#categories">分类</a>
+        <a href="/#deep">深度</a>
+        <a href="/#faq">问答</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索剧名或标签…" aria-label="搜索内容">
+          <button id="searchBtn" aria-label="搜索">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="#7a6d8f" stroke-width="1.5"/><path d="M11 11l3 3" stroke="#7a6d8f" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <a href="/#intro" class="btn-outline">网页收听</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>漫播网页版</h1>
+      <p class="hero-desc">在浏览器里直接听广播剧、有声漫画与配音节目。不用下载客户端，打开网页就能追更、收藏和发现新剧，适合通勤路上或睡前放松。</p>
+      <div class="hero-badges">
+        <span>🎧 广播剧在线听</span>
+        <span>📖 有声漫画推荐</span>
+        <span>🎙️ 配音节目</span>
+        <span>💜 网页收听</span>
+      </div>
+      <div class="hero-actions">
+        <a href="/#hot" class="btn-primary">浏览热门剧集 →</a>
+        <a href="/#faq" class="btn-secondary">常见问题</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="disc"></div>
+      <div class="card-stack">
+        <div class="mini-card">
+          <div class="dot">🎧</div>
+          <div><strong>《夜航星》第二季</strong><small>广播剧 · 更新至第8集</small></div>
+        </div>
+        <div class="mini-card">
+          <div class="dot">📖</div>
+          <div><strong>《春日回声》</strong><small>有声漫画 · 全一季</small></div>
+        </div>
+        <div class="mini-card">
+          <div class="dot">🎙️</div>
+          <div><strong>《声优休息室》</strong><small>配音节目 · 每周五更新</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三栏主内容区 -->
+  <div class="container">
+
+    <!-- 左栏 -->
+    <aside class="sidebar-left">
+      <div class="sidebar-block">
+        <h3>频道导航</h3>
+        <nav class="sidebar-nav" aria-label="频道导航">
+          <a href="/#intro" class="active">内容简介</a>
+          <a href="/#hot">热门内容推荐</a>
+          <a href="/#updates">最新更新动态</a>
+          <a href="/#categories">分类入口</a>
+          <a href="/#deep">深度解析</a>
+          <a href="/#guide">体验指南</a>
+          <a href="/#faq">常见问答</a>
+          <a href="/#comments">用户评论</a>
+          <a href="/#news">相关资讯</a>
+          <a href="/#recommend">相关推荐</a>
+          <a href="/#quote">精选口碑</a>
+        </nav>
+      </div>
+      <div class="sidebar-block">
+        <h3>标签索引</h3>
+        <div class="tag-cloud">
+          <a href="/#hot">广播剧在线听</a>
+          <a href="/#hot">有声漫画</a>
+          <a href="/#hot">配音节目</a>
+          <a href="/#categories">悬疑广播剧</a>
+          <a href="/#categories">都市情感</a>
+          <a href="/#categories">古风玄幻</a>
+          <a href="/#categories">轻喜剧</a>
+          <a href="/#updates">睡前听</a>
+          <a href="/#updates">通勤追更</a>
+          <a href="/#recommend">完结剧集</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 中栏 -->
+    <main class="main-col">
+
+      <!-- 1. 内容简介 -->
+      <section id="intro" class="section-card">
+        <div class="section-header"><h2>内容简介</h2></div>
+        <div class="intro-text">
+          <p>漫播网页版是一个在浏览器里就能收听广播剧、有声漫画和配音节目的音频内容平台。不用安装额外软件，打开页面就能浏览剧集、试听片段、查看更新进度，适合想在电脑或平板端轻松听剧的用户。平台侧重广播剧和有声漫画两类内容，同时收录配音演员访谈、幕后花絮等配音节目，覆盖悬疑、都市情感、古风玄幻、轻喜剧等方向。</p>
+          <p>如果你习惯在通勤路上或睡前找一部广播剧在线听，网页版提供了按类型、更新状态和热度筛选的入口，可以快速定位“完结剧集”或“最近更新”的条目。有声漫画推荐栏目会定期整理画风与配音搭配较好的作品，帮助对视觉和声音都有要求的听众缩小选择范围。配音节目则偏向轻松的聊天与幕后内容，适合不想追长篇剧情时随意点开一期。</p>
+          <p>页面按内容类型和收听场景做了分类，每个卡片都标注了类型标签、更新状态和简短看点。你可以把喜欢的剧集加入收藏，之后从“最近收听”区域继续。网页端不强制登录，试听和浏览分类均无需账号，收藏功能在登录后才会同步到多端。整体更新节奏为工作日每日更新剧集条目，周末集中整理有声漫画推荐和配音节目专题。</p>
+        </div>
+      </section>
+
+      <!-- 2. 热门内容推荐 -->
+      <section id="hot" class="section-card">
+        <div class="section-header">
+          <h2>热门内容推荐</h2>
+          <a href="/#updates" class="more-link">查看更新动态 →</a>
+        </div>
+        <div class="card-grid" id="hotCardGrid">
+          <div class="content-card">
+            <h3>夜航星 第二季</h3>
+            <div class="card-tags"><span>广播剧</span><span>悬疑</span><span>科幻</span></div>
+            <p>太空站失联事件背后藏着一段被抹去的航行日志，配音层次丰富，适合喜欢硬核悬疑的听众。</p>
+            <div class="card-meta"><span class="hot">🔥 热度 9.2</span><span>更新至第8集</span><span>★ 4.8</span></div>
+          </div>
+          <div class="content-card">
+            <h3>春日回声</h3>
+            <div class="card-tags"><span>有声漫画</span><span>校园</span><span>治愈</span></div>
+            <p>转学生与摄影社的日常，画面感强，配音温柔，适合睡前听或通勤路上放松。</p>
+            <div class="card-meta"><span class="hot">🔥 热度 8.7</span><span>全一季完结</span><span>★ 4.6</span></div>
+          </div>
+          <div class="content-card">
+            <h3>雾都疑案</h3>
+            <div class="card-tags"><span>广播剧</span><span>推理</span><span>民国</span></div>
+            <p>民国背景的单元探案剧，每集一个独立案件，主线暗藏身世谜团，节奏紧凑。</p>
+            <div class="card-meta"><span class="hot">🔥 热度 8.9</span><span>更新至第12集</span><span>★ 4.7</span></div>
+          </div>
+          <div class="content-card">
+            <h3>声优休息室</h3>
+            <div class="card-tags"><span>配音节目</span><span>访谈</span><span>幕后</span></div>
+            <p>每期邀请一位配音演员聊录制趣事和角色理解，轻松向，适合作为追剧间隙的调剂。</p>
+            <div class="card-meta"><span class="hot">🔥 热度 8.1</span><span>每周五更新</span><span>★ 4.5</span></div>
+          </div>
+          <div class="content-card">
+            <h3>山河令·广播剧版</h3>
+            <div class="card-tags"><span>广播剧</span><span>古风</span><span>武侠</span></div>
+            <p>江湖恩怨与知己情谊交织，配乐和音效细节丰富，适合喜欢古风长篇的听众。</p>
+            <div class="card-meta"><span class="hot">🔥 热度 9.0</span><span>更新至第20集</span><span>★ 4.9</span></div>
+          </div>
+          <div class="content-card">
+            <h3>今天也想见你</h3>
+            <div class="card-tags"><span>有声漫画</span><span>都市</span><span>甜宠</span></div>
+            <p>合租室友从互怼到心动的日常，配音自然，适合通勤追更或午休时听一小段。</p>
+            <div class="card-meta"><span class="hot">🔥 热度 8.4</span><span>更新至第6话</span><span>★ 4.4</span></div>
+          </div>
+        </div>
+        <div class="no-result" id="searchNoResult">没有找到匹配的内容，换个关键词试试。</div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section id="updates" class="section-card">
+        <div class="section-header"><h2>最新更新动态</h2></div>
+        <div class="update-list">
+          <div class="update-item"><span class="time-badge">今天</span><strong>《夜航星》第二季</strong><span>第8集「漂流信号」已上线</span></div>
+          <div class="update-item"><span class="time-badge">今天</span><strong>《声优休息室》</strong><span>第24期：配音演员谈科幻题材的声线设计</span></div>
+          <div class="update-item"><span class="time-badge">昨天</span><strong>《雾都疑案》</strong><span>第12集「钟楼旧影」更新</span></div>
+          <div class="update-item"><span class="time-badge">昨天</span><strong>《春日回声》</strong><span>番外篇「毕业之前」上线</span></div>
+          <div class="update-item"><span class="time-badge">前天</span><strong>《山河令·广播剧版》</strong><span>第20集「故人归」更新</span></div>
+          <div class="update-item"><span class="time-badge">前天</span><strong>《今天也想见你》</strong><span>第6话「雨夜便利店」更新</span></div>
+          <div class="update-item"><span class="time-badge">3天前</span><strong>《深海来信》</strong><span>新剧上线，第一季第1-3集连播</span></div>
+          <div class="update-item"><span class="time-badge">3天前</span><strong>《配音练习生》</strong><span>第9期：新人配音演员的试音日常</span></div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section id="categories" class="section-card">
+        <div class="section-header"><h2>分类入口</h2></div>
+        <div class="category-grid">
+          <a href="/#hot" class="category-item"><span class="cat-icon">🔍</span><span class="cat-name">悬疑广播剧</span><span class="cat-count">32部</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">💕</span><span class="cat-name">都市情感</span><span class="cat-count">45部</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🏮</span><span class="cat-name">古风玄幻</span><span class="cat-count">28部</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">😄</span><span class="cat-name">轻喜剧</span><span class="cat-count">19部</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">📖</span><span class="cat-name">有声漫画推荐</span><span class="cat-count">24部</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🎙️</span><span class="cat-name">配音节目</span><span class="cat-count">16档</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">✅</span><span class="cat-name">完结剧集</span><span class="cat-count">51部</span></a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🎧</span><span class="cat-name">睡前听</span><span class="cat-count">38部</span></a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section id="deep" class="section-card deep-dive">
+        <div class="section-header"><h2>深度解析</h2></div>
+        <h3>网页端适合听什么类型的内容</h3>
+        <p>漫播网页版的内容池以广播剧和有声漫画为主，广播剧偏剧情驱动，有声漫画则更依赖画面感与配音的配合。网页端因为屏幕较大，适合在电脑前一边做简单的事一边听，也适合平板横屏放在桌上当作背景音。悬疑和推理类广播剧需要留意细节音效，建议戴耳机；都市情感和轻喜剧对场景要求不高，外放也能听清主要对白。</p>
+        <p>有声漫画推荐栏目会标注“画面友好”或“纯听即可”的标签。前者建议配合漫画页面一起看，后者即使只听音频也能理解剧情走向。如果你主要在通勤路上用手机浏览器打开，优先选择“纯听即可”的条目，避免频繁切屏。</p>
+        <h3>广播剧在线听与有声漫画推荐的差异</h3>
+        <p>广播剧在线听的核心是声音表演和音效设计，剧情推进依赖对白和旁白；有声漫画推荐则多了一层视觉叙事，配音需要配合分镜节奏。两者在网页端的播放器基本一致，但有声漫画条目会额外提供“画面同步”开关，打开后播放器会跟随配音高亮对应的漫画分镜。</p>
+        <ul>
+          <li>广播剧：时长通常25—40分钟一集，适合整块时间收听。</li>
+          <li>有声漫画：单话10—20分钟，适合碎片时间或通勤。</li>
+          <li>配音节目：单期30—60分钟，偏聊天向，可倍速播放。</li>
+        </ul>
+        <h3>怎么判断一部剧是否适合自己</h3>
+        <p>先看卡片上的类型标签和简短看点，再看更新状态：连载中的剧集适合喜欢追更和讨论的听众，完结剧集则适合想一口气听完的人。网页端提供试听片段，通常为每部剧的前3—5分钟，试听时可以留意配音风格和音效密度是否符合自己的偏好。如果对某位配音演员感兴趣，可以从配音节目里找到相关访谈，再回到剧集页面按演员筛选。</p>
+        <p>漫播网页版在分类入口里单独列出了“睡前听”和“通勤追更”两个场景标签，前者多为节奏舒缓、音效柔和的作品，后者偏向单集时长较短、剧情钩子密集的剧集。这两个标签可以帮助你在不确定听什么的时候快速缩小范围。</p>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section id="guide" class="section-card">
+        <div class="section-header"><h2>体验指南</h2></div>
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>浏览分类与标签</strong><p>从左栏或分类入口进入感兴趣的垂类，卡片上的标签可以帮助进一步筛选。</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>试听与查看更新状态</strong><p>点击卡片进入详情页试听片段，确认配音风格和音质是否符合期待。</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>收藏并继续收听</strong><p>登录后可收藏剧集，网页端会记录收听进度，下次打开直接从上次位置继续。</p></div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body"><strong>按场景扩展推荐</strong><p>从“睡前听”“通勤追更”等场景标签发现更多同类内容，或通过配音节目找到相关演员作品。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section id="faq" class="section-card">
+        <div class="section-header"><h2>常见问答</h2></div>
+        <div class="faq-list">
+          <details>
+            <summary>漫播网页版需要下载客户端吗？</summary>
+            <div class="faq-answer">不需要。网页版在浏览器中直接打开即可收听，支持电脑和平板的主流浏览器。收藏和收听进度在登录后同步。</div>
+          </details>
+          <details>
+            <summary>广播剧一般多久更新一集？</summary>
+            <div class="faq-answer">不同剧集更新节奏不同，常见为每周一更或每两周一更。更新动态板块会列出最近上线的集数，也可以查看具体剧集的追更日历。</div>
+          </details>
+          <details>
+            <summary>悬疑广播剧适合什么人听？</summary>
+            <div class="faq-answer">适合喜欢推理、案件和氛围感的听众。建议戴耳机收听，部分剧集有较强的音效设计，外放可能损失细节。</div>
+          </details>
+          <details>
+            <summary>有声漫画推荐和广播剧有什么区别？</summary>
+            <div class="faq-answer">有声漫画有画面配合，配音跟随分镜推进；广播剧主要靠声音表演和音效叙事。网页端的有声漫画条目提供画面同步开关。</div>
+          </details>
+          <details>
+            <summary>网页版和手机App相比哪个更方便？</summary>
+            <div class="faq-answer">如果主要在电脑前或平板使用，网页版无需安装、打开即听；手机端则更适合通勤路上收听。两者收藏和进度在登录后互通。</div>
+          </details>
+          <details>
+            <summary>没听完的剧下次怎么继续？</summary>
+            <div class="faq-answer">登录后收听进度会自动保存，再次打开同一剧集时会提示从上次位置继续。未登录状态下进度仅保留在当前浏览器。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section id="comments" class="section-card">
+        <div class="section-header"><h2>用户评论</h2></div>
+        <div class="comment-grid">
+          <div class="comment-card"><div class="comment-user">晚风收音机</div><div class="comment-text">《夜航星》第二季的音效比第一季更细，戴耳机听很有代入感。</div></div>
+          <div class="comment-card"><div class="comment-user">小满不加班</div><div class="comment-text">网页版打开就能听，午休时用平板放《春日回声》刚好。</div></div>
+          <div class="comment-card"><div class="comment-user">雾都路人</div><div class="comment-text">《雾都疑案》每集一个案子，不用从头补，适合我这种碎片时间听的人。</div></div>
+          <div class="comment-card"><div class="comment-user">声控盒子</div><div class="comment-text">配音节目挺有意思，能听到演员聊录制时的状态，比单纯追剧多一层乐趣。</div></div>
+          <div class="comment-card"><div class="comment-user">青柠气泡</div><div class="comment-text">希望能多加点古风完结剧，追更等得有点急。</div></div>
+          <div class="comment-card"><div class="comment-user">深夜列车</div><div class="comment-text">睡前听标签里的剧确实都比较柔和，不会越听越精神。</div></div>
+          <div class="comment-card"><div class="comment-user">木木夕</div><div class="comment-text">有声漫画的画面同步功能挺实用，不用手动翻页了。</div></div>
+          <div class="comment-card"><div class="comment-user">山海之间</div><div class="comment-text">《山河令》广播剧版的配乐很加分，江湖氛围做出来了。</div></div>
+          <div class="comment-card"><div class="comment-user">一颗奶糖</div><div class="comment-text">分类里的“通勤追更”帮我找到好几部单集不长的剧，路上听刚好。</div></div>
+          <div class="comment-card"><div class="comment-user">阿七不吃鱼</div><div class="comment-text">试听片段有点短，有时候要听两遍才能决定追不追。</div></div>
+          <div class="comment-card"><div class="comment-user">南巷旧人</div><div class="comment-text">收藏同步做得不错，电脑上收藏的剧手机浏览器也能看到。</div></div>
+          <div class="comment-card"><div class="comment-user">星野拾光</div><div class="comment-text">轻喜剧分类里的剧适合做饭时放着听，轻松不费脑。</div></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section id="news" class="section-card">
+        <div class="section-header"><h2>相关资讯</h2></div>
+        <div class="news-list">
+          <div class="news-item"><span class="news-date">2025-03-18</span><div class="news-body"><strong>《夜航星》第二季进入主线高潮</strong><p>第8集上线后剧情推进到太空站核心区域，后续两集将揭晓航行日志的完整内容。</p></div></div>
+          <div class="news-item"><span class="news-date">2025-03-16</span><div class="news-body"><strong>有声漫画推荐专题新增“治愈系”分类</strong><p>专题整理了一批画风柔和、配音节奏舒缓的作品，适合睡前或周末放松时收听。</p></div></div>
+          <div class="news-item"><span class="news-date">2025-03-14</span><div class="news-body"><strong>配音节目《声优休息室》迎来第24期</strong><p>本期邀请科幻广播剧的配音演员聊声线设计和录音棚趣事，已在网页端上线。</p></div></div>
+          <div class="news-item"><span class="news-date">2025-03-11</span><div class="news-body"><strong>古风广播剧《山河令》更新至第20集</strong><p>剧情进入后半段，主要角色关系出现关键转折，追更听众讨论热度上升。</p></div></div>
+          <div class="news-item"><span class="news-date">2025-03-08</span><div class="news-body"><strong>新剧《深海来信》上线连播三集</strong><p>悬疑向广播剧，首周连更三集，网页端试听片段同步开放。</p></div></div>
+          <div class="news-item"><span class="news-date">2025-03-05</span><div class="news-body"><strong>网页端播放器优化画面同步体验</strong><p>有声漫画条目播放时，分镜高亮与配音对白对齐更准确，切换剧集后自动记忆开关状态。</p></div></div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section id="recommend" class="section-card">
+        <div class="section-header"><h2>相关推荐</h2></div>
+        <div class="recommend-tags">
+          <a href="/#hot">悬疑推理广播剧</a>
+          <a href="/#hot">都市情感连载中</a>
+          <a href="/#hot">古风玄幻完结剧</a>
+          <a href="/#hot">有声漫画校园治愈</a>
+          <a href="/#hot">配音演员访谈节目</a>
+          <a href="/#hot">睡前放松专辑</a>
+          <a href="/#hot">通勤短剧合集</a>
+          <a href="/#hot">轻喜剧下饭推荐</a>
+        </div>
+      </section>
+
+      <!-- 11. 精选口碑 / 引语卡 -->
+      <section id="quote" class="quote-panel">
+        <blockquote>“以前觉得广播剧得专门找时间听，现在网页版开着当背景音，反而能一集不落追完。”</blockquote>
+        <cite>—— 来自用户「晚风收音机」的收听感受分享</cite>
+      </section>
+
+    </main>
+
+    <!-- 右栏 -->
+    <aside class="sidebar-right">
+      <div class="sidebar-block">
+        <h3>页内目录</h3>
+        <ul class="toc-list">
+          <li><a href="/#intro">内容简介</a></li>
+          <li><a href="/#hot">热门内容推荐</a></li>
+          <li><a href="/#updates">最新更新动态</a></li>
+          <li><a href="/#categories">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#recommend">相关推荐</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h3>热门条目</h3>
+        <ol class="hot-list">
+          <li><a href="/#hot">夜航星 第二季</a></li>
+          <li><a href="/#hot">山河令·广播剧版</a></li>
+          <li><a href="/#hot">雾都疑案</a></li>
+          <li><a href="/#hot">春日回声</a></li>
+          <li><a href="/#hot">声优休息室</a></li>
+          <li><a href="/#hot">今天也想见你</a></li>
+        </ol>
+      </div>
+      <div class="sidebar-block">
+        <h3>延伸阅读</h3>
+        <div class="extend-links">
+          <a href="/#deep">悬疑广播剧的听感特点 <span>深度</span></a>
+          <a href="/#deep">有声漫画与广播剧区别 <span>对比</span></a>
+          <a href="/#faq">网页版与App使用场景 <span>问答</span></a>
+          <a href="/#guide">如何找到适合睡前听的剧 <span>指南</span></a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo-text">漫播网页版</div>
+        <p>在浏览器里听广播剧、有声漫画与配音节目。按类型、场景和更新状态找到适合你的音频内容。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容分类</h4>
+        <a href="/#categories">悬疑广播剧</a>
+        <a href="/#categories">都市情感</a>
+        <a href="/#categories">古风玄幻</a>
+        <a href="/#categories">有声漫画推荐</a>
+      </div>
+      <div class="footer-col">
+        <h4>发现</h4>
+        <a href="/#hot">热门内容推荐</a>
+        <a href="/#updates">最新更新动态</a>
+        <a href="/#recommend">相关推荐</a>
+        <a href="/#faq">常见问答</a>
+      </div>
+      <div class="footer-col">
+        <h4>场景</h4>
+        <a href="/#categories">睡前听</a>
+        <a href="/#categories">通勤追更</a>
+        <a href="/#categories">完结剧集</a>
+        <a href="/#guide">体验指南</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 漫播网页版 · 内容展示页</span>
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // 搜索筛选
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const hotGrid = document.getElementById('hotCardGrid');
+      const noResult = document.getElementById('searchNoResult');
+      const cards = hotGrid ? Array.from(hotGrid.querySelectorAll('.content-card')) : [];
+
+      function filterCards() {
+        const q = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+        cards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (!q || text.includes(q)) {
+            card.style.display = '';
+            visible++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        if (q && visible === 0) {
+          noResult.classList.add('show');
+        } else {
+          noResult.classList.remove('show');
+        }
+      }
+
+      if (searchBtn) searchBtn.addEventListener('click', filterCards);
+      if (searchInput) searchInput.addEventListener('input', filterCards);
+
+      // 左栏导航高亮（基于滚动位置）
+      const navLinks = document.querySelectorAll('.sidebar-nav a');
+      const sections = document.querySelectorAll('main section[id]');
+
+      function updateActiveNav() {
+        let currentId = '';
+        const offset = 140;
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= offset) {
+            currentId = sec.id;
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '/#' + currentId);
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+
+      // 锚点平滑偏移（兼容不支持 scroll-padding 的浏览器）
+      document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('/#')) {
+            const id = href.substring(2);
+            const target = document.getElementById(id);
+            if (target) {
+              e.preventDefault();
+              const yOffset = -(64 + 38 + 16);
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+  </html>
