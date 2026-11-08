@@ -1,0 +1,1311 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blibli-番剧更新_追番指南_弹幕社区对比</title>
+  <meta name="description" content="Blibli 是番剧与弹幕文化内容门户，提供新番更新表、追番场景指南、社区氛围对比与热门条目推荐，适合动画爱好者与弹幕用户浏览。">
+  <meta name="keywords" content="番剧更新表,新番追更,弹幕社区,追番指南,动画推荐">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2300a1d6'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EB%3C/text%3E%3C/svg%3E">
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+  <style>
+    :root {
+      --primary: #00a1d6;
+      --primary-dark: #0077a3;
+      --primary-light: #e6f7fd;
+      --accent: #ff6b9d;
+      --accent-soft: #fff0f5;
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #18191c;
+      --text-secondary: #61666d;
+      --text-light: #9499a0;
+      --border: #e3e5e7;
+      --radius: 10px;
+      --radius-sm: 6px;
+      --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --sticky-offset: 108px;
+      --container: 1380px;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    *,
+    *::before,
+    *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--sticky-offset); }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    img, svg { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .announce-bar {
+      background: linear-gradient(90deg, #00a1d6, #23b8e8);
+      color: #fff;
+      text-align: center;
+      font-size: 13px;
+      padding: 7px 16px;
+      letter-spacing: 0.3px;
+    }
+    .announce-bar strong { font-weight: 600; }
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+    .header-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--primary);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -1px;
+      box-shadow: 0 2px 8px rgba(0, 161, 214, 0.3);
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+    .logo-text span { color: var(--primary); }
+    .header-nav {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .header-nav::-webkit-scrollbar { display: none; }
+    .header-nav a {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .header-nav a:hover { background: var(--primary-light); color: var(--primary-dark); }
+    .header-actions { display: flex; gap: 10px; align-items: center; }
+    .header-actions .btn-search {
+      background: var(--primary-light);
+      border: none;
+      color: var(--primary-dark);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #e6f7fd 0%, #f0faff 50%, #fff5f8 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 40px 24px 36px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--primary), #23b8e8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .hero-tags span {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 1.5px solid var(--primary);
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--primary-light); }
+    .hero-visual {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .hero-visual-header span:first-child { font-weight: 600; color: var(--text); }
+    .hero-v-list { display: flex; flex-direction: column; gap: 10px; }
+    .hero-v-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .hero-v-item .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+    .hero-v-item .dot.pink { background: var(--accent); }
+    .hero-v-item .name { font-weight: 500; flex: 1; }
+    .hero-v-item .badge {
+      font-size: 11px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 1px 8px;
+      border-radius: 10px;
+    }
+    .hero-v-item .badge.hot { background: #fff0f5; color: #e63f6e; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .main-layout {
+      display: grid;
+      grid-template-columns: 176px 1fr 240px;
+      gap: 28px;
+      padding: 28px 0 48px;
+      align-items: start;
+    }
+
+    .left-sidebar {
+      position: sticky;
+      top: var(--sticky-offset);
+    }
+    .side-panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .side-panel h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .channel-list { display: flex; flex-direction: column; gap: 2px; }
+    .channel-list a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .channel-list a:hover,
+    .channel-list a.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+    .channel-list a .ch-icon {
+      width: 18px; text-align: center;
+      font-size: 14px;
+    }
+    .filter-group { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .filter-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-tag:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .filter-tag.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .center-main { min-width: 0; }
+    .content-section {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 24px 26px;
+      margin-bottom: 20px;
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .section-head h2 .accent { color: var(--primary); }
+    .section-head .sub {
+      font-size: 12.5px;
+      color: var(--text-light);
+    }
+    .intro-text p {
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      font-size: 14.5px;
+    }
+    .intro-text p:last-child { margin-bottom: 0; }
+    .intro-text strong { color: var(--text); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .content-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      background: var(--surface);
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .content-card:hover {
+      box-shadow: var(--shadow-hover);
+      border-color: #c9d0d6;
+      transform: translateY(-2px);
+    }
+    .card-type {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 1px 8px;
+      border-radius: 10px;
+      align-self: flex-start;
+    }
+    .type-番剧 { background: #e6f7fd; color: #0077a3; }
+    .type-国创 { background: #fff0f5; color: #c9355c; }
+    .type-电影 { background: #f0f7e6; color: #4a7a1f; }
+    .type-纪录片 { background: #f5f0ff; color: #6b4fa0; }
+    .type-综艺 { background: #fff7e6; color: #b37700; }
+    .content-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+    }
+    .content-card .card-desc {
+      font-size: 12.5px;
+      color: var(--text-light);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      gap: 10px;
+      font-size: 11.5px;
+      color: var(--text-light);
+      flex-wrap: wrap;
+    }
+    .card-meta .hot { color: var(--accent); font-weight: 600; }
+
+    .update-list { display: flex; flex-direction: column; }
+    .update-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid #f0f1f2;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-time {
+      font-size: 12px;
+      color: var(--text-light);
+      white-space: nowrap;
+      min-width: 44px;
+      padding-top: 1px;
+    }
+    .update-body { flex: 1; min-width: 0; }
+    .update-body .u-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .update-body .u-desc {
+      font-size: 12.5px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .category-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      transition: all 0.15s;
+      font-size: 13.5px;
+      font-weight: 500;
+    }
+    .category-item:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+    .category-item .cat-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--primary-light);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .deep-dive h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 20px 0 8px;
+      color: var(--text);
+    }
+    .deep-dive h3:first-child { margin-top: 0; }
+    .deep-dive p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 10px;
+    }
+    .deep-dive ul {
+      margin: 6px 0 12px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .deep-dive ul li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-left: 18px;
+      position: relative;
+    }
+    .deep-dive ul li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      counter-reset: step;
+    }
+    .guide-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .guide-step .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .guide-step .step-body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .guide-step .step-body p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    details {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    details summary {
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background: #fafbfc;
+      list-style: none;
+      transition: background 0.15s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: "+";
+      font-size: 18px;
+      color: var(--text-light);
+      transition: transform 0.2s;
+    }
+    details[open] summary::after { content: "−"; }
+    details summary:hover { background: var(--primary-light); }
+    details .faq-answer {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      border-top: 1px solid var(--border);
+    }
+
+    .review-list { display: flex; flex-direction: column; gap: 10px; }
+    .review-item {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f5f5f6;
+    }
+    .review-item:last-child { border-bottom: none; }
+    .review-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c2e9fb, #a1c4fd);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .review-body { flex: 1; min-width: 0; }
+    .review-body .r-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 1px;
+    }
+    .review-body .r-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 12px; }
+    .news-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .news-date {
+      font-size: 12px;
+      color: var(--text-light);
+      min-width: 58px;
+      padding-top: 2px;
+    }
+    .news-body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .news-body p {
+      font-size: 12.5px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .tag-index { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-index a {
+      font-size: 12.5px;
+      padding: 5px 14px;
+      border-radius: 16px;
+      background: #f4f5f7;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .tag-index a:hover {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .right-sidebar {
+      position: sticky;
+      top: var(--sticky-offset);
+    }
+    .toc-list { display: flex; flex-direction: column; gap: 1px; }
+    .toc-list a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .toc-list a:hover {
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      border-left-color: var(--primary);
+    }
+    .hot-list { display: flex; flex-direction: column; gap: 8px; }
+    .hot-item {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      font-size: 13px;
+    }
+    .hot-item .rank {
+      font-weight: 700;
+      color: var(--text-light);
+      font-size: 12px;
+      min-width: 16px;
+    }
+    .hot-item .rank.top { color: var(--accent); }
+    .hot-item a { color: var(--text-secondary); transition: color 0.15s; }
+    .hot-item a:hover { color: var(--primary-dark); }
+
+    .site-footer {
+      background: #1a1d21;
+      color: #a8adb4;
+      margin-top: 20px;
+    }
+    .footer-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 36px 24px 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+    .footer-brand .f-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #8b9199;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e3e5e7;
+      margin-bottom: 10px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 12.5px;
+      color: #8b9199;
+      padding: 3px 0;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid #2c3036;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: #6b7178;
+    }
+
+    @media (max-width: 1080px) {
+      .main-layout { grid-template-columns: 1fr; gap: 20px; }
+      .left-sidebar, .right-sidebar { position: static; }
+      .left-sidebar { order: 2; }
+      .center-main { order: 1; }
+      .right-sidebar { order: 3; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .hero-visual { max-width: 380px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .header-inner { padding: 0 14px; height: 56px; gap: 12px; }
+      .logo-text { font-size: 18px; }
+      .logo-mark { width: 32px; height: 32px; font-size: 18px; }
+      .container { padding: 0 14px; }
+      .hero-inner { padding: 24px 14px 22px; }
+      .hero h1 { font-size: 26px; }
+      .content-section { padding: 18px 16px; }
+      .card-grid { grid-template-columns: 1fr 1fr; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+      .update-time { display: none; }
+      .news-date { display: none; }
+    }
+    @media (max-width: 400px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+    }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="announce-bar" role="status">
+    <strong>新番速递</strong> · 4 月新番更新表已上线 · 追番日历同步更新 · 弹幕礼仪指南开放查阅
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/#top" class="logo" aria-label="Blibli 首页">
+        <span class="logo-mark" aria-hidden="true">B</span>
+        <span class="logo-text">Bli<span>bli</span></span>
+      </a>
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="/#intro">平台简介</a>
+        <a href="/#hot">热门推荐</a>
+        <a href="/#updates">新番更新</a>
+        <a href="/#categories">分类导航</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">追番指南</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-search" type="button" aria-label="搜索内容" onclick="document.getElementById('search-input').focus();document.getElementById('search-input').scrollIntoView({behavior:'smooth',block:'center'});">搜索</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <h1>Blibli</h1>
+      <p class="hero-desc">聚集新番更新表、追番场景指南与弹幕社区氛围观察。从本季热门番剧到冷门佳作，用类型标签和场景需求帮你快速找到今晚要看的那一部。</p>
+      <div class="hero-tags">
+        <span>新番更新表</span>
+        <span>追番场景</span>
+        <span>弹幕社区</span>
+        <span>完结番补番</span>
+        <span>国创动画</span>
+      </div>
+      <div class="hero-cta">
+        <a href="/#hot" class="btn-primary">浏览热门番剧</a>
+        <a href="/#updates" class="btn-outline">查看更新日历</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-label="今日新番速览">
+      <div class="hero-visual-header">
+        <span>今日新番速览</span>
+        <span>示例排期</span>
+      </div>
+      <div class="hero-v-list">
+        <div class="hero-v-item"><span class="dot"></span><span class="name">迷宫饭 第二季</span><span class="badge">20:00</span></div>
+        <div class="hero-v-item"><span class="dot pink"></span><span class="name">时光代理人 英都篇</span><span class="badge hot">21:30</span></div>
+        <div class="hero-v-item"><span class="dot"></span><span class="name">葬送的芙莉莲</span><span class="badge">22:00</span></div>
+        <div class="hero-v-item"><span class="dot"></span><span class="name">怪兽8号 第二季</span><span class="badge">23:00</span></div>
+        <div class="hero-v-item"><span class="dot pink"></span><span class="name">刺客伍六七 第五季</span><span class="badge hot">待定</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="main-layout">
+
+    <!-- 左栏 -->
+    <aside class="left-sidebar" aria-label="频道与筛选">
+      <div class="side-panel">
+        <h3>频道导航</h3>
+        <nav class="channel-list" aria-label="内容频道">
+          <a href="/#hot" class="active"><span class="ch-icon">🔥</span>热门番剧</a>
+          <a href="/#updates"><span class="ch-icon">📅</span>新番更新</a>
+          <a href="/#categories"><span class="ch-icon">📂</span>分类筛选</a>
+          <a href="/#deep"><span class="ch-icon">📖</span>深度解析</a>
+          <a href="/#guide"><span class="ch-icon">🧭</span>追番指南</a>
+          <a href="/#faq"><span class="ch-icon">❓</span>常见问题</a>
+          <a href="/#reviews"><span class="ch-icon">💬</span>用户评论</a>
+          <a href="/#news"><span class="ch-icon">📰</span>相关资讯</a>
+          <a href="/#tags"><span class="ch-icon">🏷️</span>方向索引</a>
+        </nav>
+      </div>
+      <div class="side-panel">
+        <h3>按类型筛选</h3>
+        <div class="filter-group" id="type-filters" role="group" aria-label="类型筛选">
+          <button class="filter-tag active" data-filter="all" type="button">全部</button>
+          <button class="filter-tag" data-filter="番剧" type="button">番剧</button>
+          <button class="filter-tag" data-filter="国创" type="button">国创</button>
+          <button class="filter-tag" data-filter="电影" type="button">电影</button>
+          <button class="filter-tag" data-filter="纪录片" type="button">纪录片</button>
+          <button class="filter-tag" data-filter="综艺" type="button">综艺</button>
+        </div>
+      </div>
+      <div class="side-panel">
+        <h3>按场景看</h3>
+        <div class="filter-group" id="scene-filters" role="group" aria-label="场景筛选">
+          <button class="filter-tag active" data-scene="all" type="button">不限</button>
+          <button class="filter-tag" data-scene="通勤" type="button">通勤追</button>
+          <button class="filter-tag" data-scene="睡前" type="button">睡前看</button>
+          <button class="filter-tag" data-scene="周末" type="button">周末补</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 中栏 -->
+    <main class="center-main">
+
+      <!-- 板块1 内容简介 -->
+      <section class="content-section" id="intro">
+        <div class="section-head">
+          <h2>番剧内容与社区文化简介</h2>
+        </div>
+        <div class="intro-text">
+          <p>Blibli 是一个以番剧更新、弹幕文化观察和追番场景指南为核心的内容门户。如果你正在找“本季新番更新表”“完结番补番清单”或“弹幕社区氛围对比”，这里按照类型、场景和更新节奏把内容整理成可直接筛选的条目。我们关注的不只是哪部动画上了热门，还包括一部番适合什么时间看、更新频率是否稳定、弹幕环境是否友好。</p>
+          <p>对于习惯通勤追更的用户，页面中的更新日历和场景标签能快速定位单集时长 24 分钟以内的短篇番；对于周末喜欢一口气补完的观众，完结番专题和类型筛选提供了清晰的选择路径。国创动画与日本番剧在板块中平行呈现，方便比较不同制作体系下的叙事节奏与更新规律。</p>
+          <p>弹幕社区是观看体验的一部分。不同作品的弹幕密度、玩梗浓度和讨论氛围差异明显，我们在深度解析里用具体条目说明这些区别，帮助你在“追热度”和“求清净”之间做出选择。所有内容名称、评分和热度均为示例数据，用于展示页面结构与筛选逻辑。</p>
+        </div>
+      </section>
+
+      <!-- 板块2 热门内容推荐 -->
+      <section class="content-section" id="hot">
+        <div class="section-head">
+          <h2>热门番剧与<span class="accent">新番推荐</span></h2>
+          <span class="sub">按更新热度与类型整理</span>
+        </div>
+        <div class="card-grid" id="hot-cards">
+          <article class="content-card" data-type="番剧" data-scene="通勤">
+            <span class="card-type type-番剧">番剧</span>
+            <h4>迷宫饭 第二季</h4>
+            <p class="card-desc"> dungeon 美食冒险续篇，单集节奏紧凑，适合午休或通勤分段观看。</p>
+            <div class="card-meta"><span class="hot">热度 98.2万</span><span>更新至第 8 话</span></div>
+          </article>
+          <article class="content-card" data-type="国创" data-scene="睡前">
+            <span class="card-type type-国创">国创</span>
+            <h4>时光代理人 英都篇</h4>
+            <p class="card-desc">悬疑线收束，每集结尾留钩子，睡前看容易停不下来，建议预留缓冲时间。</p>
+            <div class="card-meta"><span class="hot">热度 86.5万</span><span>更新至第 6 话</span></div>
+          </article>
+          <article class="content-card" data-type="番剧" data-scene="周末">
+            <span class="card-type type-番剧">番剧</span>
+            <h4>葬送的芙莉莲</h4>
+            <p class="card-desc">长篇奇幻叙事，已完结适合周末集中补番，情感线后劲较足。</p>
+            <div class="card-meta"><span class="hot">热度 92.1万</span><span>全 28 话完结</span></div>
+          </article>
+          <article class="content-card" data-type="番剧" data-scene="通勤">
+            <span class="card-type type-番剧">番剧</span>
+            <h4>怪兽8号 第二季</h4>
+            <p class="card-desc">战斗场面密集，单集信息量适中，适合碎片时间跟进主线。</p>
+            <div class="card-meta"><span class="hot">热度 84.7万</span><span>更新至第 5 话</span></div>
+          </article>
+          <article class="content-card" data-type="国创" data-scene="周末">
+            <span class="card-type type-国创">国创</span>
+            <h4>刺客伍六七 第五季</h4>
+            <p class="card-desc">单元剧与主线交织，风格轻松，适合周末连看多集。</p>
+            <div class="card-meta"><span class="hot">热度 79.3万</span><span>更新至第 4 话</span></div>
+          </article>
+          <article class="content-card" data-type="电影" data-scene="睡前">
+            <span class="card-type type-电影">电影</span>
+            <h4>蓦然回首 动画电影</h4>
+            <p class="card-desc">单部时长约 58 分钟，情绪浓度高，适合安静环境一次看完。</p>
+            <div class="card-meta"><span class="hot">热度 71.8万</span><span>已上线</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 板块3 最新更新 -->
+      <section class="content-section" id="updates">
+        <div class="section-head">
+          <h2>新番更新表与<span class="accent">追更动态</span></h2>
+          <span class="sub">示例排期，按时间顺序</span>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <span class="update-time">20:00</span>
+            <div class="update-body">
+              <div class="u-title">迷宫饭 第二季 第 8 话</div>
+              <div class="u-desc">迷宫深层探索，新料理登场，队伍分工出现变化。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">21:30</span>
+            <div class="update-body">
+              <div class="u-title">时光代理人 英都篇 第 6 话</div>
+              <div class="u-desc">时间线交叉点收束，关键配角背景补完。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">22:00</span>
+            <div class="update-body">
+              <div class="u-title">葬送的芙莉莲 第 28 话（完结）</div>
+              <div class="u-desc">旅途终点与告别，长篇叙事收束，适合从头补完。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">23:00</span>
+            <div class="update-body">
+              <div class="u-title">怪兽8号 第二季 第 5 话</div>
+              <div class="u-desc">防卫队实战推进，主角身份危机加深。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">18:00</span>
+            <div class="update-body">
+              <div class="u-title">刺客伍六七 第五季 第 4 话</div>
+              <div class="u-desc">单元任务与主线线索并行，喜剧节奏回归。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">12:00</span>
+            <div class="update-body">
+              <div class="u-title">药屋少女的呢喃 第 22 话</div>
+              <div class="u-desc">宫廷谜题推进，主角推理线进入新阶段。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">19:30</span>
+            <div class="update-body">
+              <div class="u-title">反派千金等级99 第 10 话</div>
+              <div class="u-desc">轻松喜剧路线，适合通勤时段观看。</div>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">周四</span>
+            <div class="update-body">
+              <div class="u-title">关于我转生变成史莱姆这档事 第三季</div>
+              <div class="u-desc">长篇连载，适合按周追更或攒季度补。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块4 分类入口 -->
+      <section class="content-section" id="categories">
+        <div class="section-head">
+          <h2>按类型找番：<span class="accent">番剧分类入口</span></h2>
+          <span class="sub">点击进入对应筛选</span>
+        </div>
+        <div class="category-grid">
+          <a href="/#hot" class="category-item"><span class="cat-icon">🗾</span>日本新番</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🇨🇳</span>国创动画</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🎬</span>动画电影</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">📖</span>漫画改编</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">⚔️</span>战斗热血</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🍃</span>治愈日常</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">🔍</span>悬疑推理</a>
+          <a href="/#hot" class="category-item"><span class="cat-icon">💕</span>恋爱喜剧</a>
+        </div>
+      </section>
+
+      <!-- 板块5 深度解析正文 -->
+      <section class="content-section deep-dive" id="deep">
+        <div class="section-head">
+          <h2>深度解析：<span class="accent">本季番剧更新节奏与弹幕氛围</span></h2>
+        </div>
+        <h3>更新节奏如何影响追番选择</h3>
+        <p>本季新番更新表呈现明显的两极分布：一部分作品保持每周固定时间更新，适合通勤追更用户建立观看习惯；另一部分作品采用集中放出或延期更新，更适合攒到周末一次性补完。以《迷宫饭 第二季》为例，每周四晚间更新一话，单集信息密度适中，即使中途漏看一话也能较快接上主线。</p>
+        <p>相比之下，长篇连载如《关于我转生变成史莱姆这档事 第三季》更适合按季度补番。每周追更容易产生碎片化观感，而攒够一季再连续观看，对世界观和人物关系的理解会更连贯。追番场景没有绝对优劣，关键是匹配自己的时间安排。</p>
+
+        <h3>弹幕社区氛围差异与选择建议</h3>
+        <p>Blibli 的弹幕文化在不同作品下表现差异明显。热门新番的弹幕密度高，玩梗和实时反应集中，适合喜欢热闹讨论氛围的观众；冷门佳作或完结老番的弹幕更偏向剧情分析和细节考据，适合安静观看。如果你对弹幕敏感，可以在播放设置中调整密度或关键词屏蔽。</p>
+        <ul>
+          <li>高密度弹幕区：热门新番首播当晚，适合想同步感受社区反应的观众。</li>
+          <li>中低密度弹幕区：完结番与冷门类型，适合专注剧情和画面细节。</li>
+          <li>弹幕礼仪：避免剧透、引战和重复刷屏，是维持观看体验的基础。</li>
+        </ul>
+
+        <h3>国创与日番的更新习惯对比</h3>
+        <p>国创动画在更新节奏上更常采用首集连播或阶段性集中更新，适合周末补番场景；日本番剧则普遍保持周更，适合通勤碎片时间跟进。两者在弹幕文化上也有区别：国创评论区更常出现对本土梗和配音的讨论，日番弹幕则更集中在对原作和声优的反馈。选择时可以根据自己更在意的维度来定。</p>
+        <p>无论是哪种类型，Blibli 页面提供的类型筛选和场景标签都能帮助缩小范围。如果你还在犹豫，可以先从更新稳定的周更番开始，建立追番节奏后再尝试集中补完型作品。</p>
+      </section>
+
+      <!-- 板块6 体验指南 -->
+      <section class="content-section" id="guide">
+        <div class="section-head">
+          <h2>追番体验指南：<span class="accent">从筛选到追更</span></h2>
+        </div>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <h4>用类型标签缩小范围</h4>
+              <p>在左栏选择番剧、国创、电影等类型，或使用战斗、治愈、悬疑等分类入口，快速定位感兴趣的方向。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <h4>按场景筛选更新节奏</h4>
+              <p>通勤追选择周更短篇，睡前看优先单集情绪完整的作品，周末补则适合完结番或集中放出的长篇。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <h4>参考更新表安排时间</h4>
+              <p>更新表按时间列出当日新番，可据此决定是当晚追更还是攒到周末。完结标记帮助识别补番时机。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <span class="step-num">4</span>
+            <div class="step-body">
+              <h4>观察弹幕氛围再决定</h4>
+              <p>如果你在意观看环境，可以先用低密度弹幕试看一话，再决定是否开启高密度模式参与讨论。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块7 FAQ -->
+      <section class="content-section" id="faq">
+        <div class="section-head">
+          <h2>关于番剧与追番的<span class="accent">常见问题</span></h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>新番一般每周什么时候更新？</summary>
+            <div class="faq-answer">不同作品的更新时间分散在工作日傍晚到深夜，也有部分作品安排在周末上午。页面更新表按时间顺序列出当日条目，可以按自己的空闲时段选择追更。</div>
+          </details>
+          <details>
+            <summary>完结番和连载番该怎么选？</summary>
+            <div class="faq-answer">如果你时间碎片化，优先选周更连载番，单集跟进压力小；如果有整块周末时间，完结番更适合一口气补完，情感线和世界观连贯性更强。</div>
+          </details>
+          <details>
+            <summary>弹幕太密集影响观看怎么办？</summary>
+            <div class="faq-answer">可以在播放设置里降低弹幕密度或开启关键词屏蔽。热门新番首播当晚弹幕最密集，错峰观看也能获得更安静的体验。</div>
+          </details>
+          <details>
+            <summary>国创动画和日番在更新节奏上有什么区别？</summary>
+            <div class="faq-answer">国创更常采用首集连播或阶段性集中更新，日番普遍保持周更。追更习惯上，国创适合周末补，日番适合通勤碎片时间跟进。</div>
+          </details>
+          <details>
+            <summary>怎么判断一部番适合睡前看还是通勤看？</summary>
+            <div class="faq-answer">看单集时长和情绪浓度。24 分钟左右、剧情推进平稳的适合通勤；单集情绪浓度高或结尾留钩子的作品，睡前看容易影响入睡，建议预留缓冲时间。</div>
+          </details>
+          <details>
+            <summary>冷门番值得追吗？</summary>
+            <div class="faq-answer">冷门番的弹幕氛围通常更安静，适合专注剧情和作画细节。如果你不依赖实时讨论热度，冷门佳作往往能提供更完整的个人观看体验。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 板块8 用户评论 -->
+      <section class="content-section" id="reviews">
+        <div class="section-head">
+          <h2>观众怎么看：<span class="accent">追番体验评论</span></h2>
+        </div>
+        <div class="review-list">
+          <div class="review-item"><div class="review-avatar">阿</div><div class="review-body"><div class="r-name">阿柴不睡觉</div><div class="r-text">迷宫饭第二季的料理画面比第一季更细，晚上看容易饿，建议备点零食。</div></div></div>
+          <div class="review-item"><div class="review-avatar">青</div><div class="review-body"><div class="r-name">青柠气泡水</div><div class="r-text">时光代理人英都篇的节奏比预期慢一点，但第六集收线很稳，值得等。</div></div></div>
+          <div class="review-item"><div class="review-avatar">小</div><div class="review-body"><div class="r-name">小行星坠落</div><div class="r-text">芙莉莲完结之后又从头补了一遍，弹幕里很多考据，二刷体验比首刷还好。</div></div></div>
+          <div class="review-item"><div class="review-avatar">铁</div><div class="review-body"><div class="r-name">铁皮罐头</div><div class="r-text">怪兽8号第二季战斗作画在线，就是更新太慢，攒三集一起看比较爽。</div></div></div>
+          <div class="review-item"><div class="review-avatar">七</div><div class="review-body"><div class="r-name">七海不是海</div><div class="r-text">伍六七第五季风格回来了，单元剧节奏舒服，适合吃饭的时候看。</div></div></div>
+          <div class="review-item"><div class="review-avatar">半</div><div class="review-body"><div class="r-name">半糖去冰</div><div class="r-text">药屋少女的推理线比想象中扎实，宫廷背景的细节也做得不错。</div></div></div>
+          <div class="review-item"><div class="review-avatar">木</div><div class="review-body"><div class="r-name">木木木木林</div><div class="r-text">反派千金等级99的喜剧节奏很对胃口，通勤路上看一集刚好。</div></div></div>
+          <div class="review-item"><div class="review-avatar">早</div><div class="review-body"><div class="r-name">早八起不来</div><div class="r-text">史莱姆第三季攒了半季没看，准备周末一次性补完，周更实在等不了。</div></div></div>
+          <div class="review-item"><div class="review-avatar">乌</div><div class="review-body"><div class="r-name">乌龙茶吨吨</div><div class="r-text">蓦然回首动画电影情绪很满，建议一个人安静看完，弹幕可以关掉。</div></div></div>
+          <div class="review-item"><div class="review-avatar">猫</div><div class="review-body"><div class="r-name">猫背上的鱼</div><div class="r-text">最近新番弹幕剧透有点多，首播当晚建议关弹幕或者开关键词屏蔽。</div></div></div>
+          <div class="review-item"><div class="review-avatar">星</div><div class="review-body"><div class="r-name">星野拾光</div><div class="r-text">分类入口挺好用的，按治愈日常筛出来几部之前没注意到的番。</div></div></div>
+          <div class="review-item"><div class="review-avatar">南</div><div class="review-body"><div class="r-name">南风知我意</div><div class="r-text">国创和日番分开看确实方便，更新节奏不一样，追更习惯也得跟着调。</div></div></div>
+          <div class="review-item"><div class="review-avatar">小</div><div class="review-body"><div class="r-name">小鹿乱撞墙</div><div class="r-text">恋爱喜剧分类里好作品不少，就是有些标题太长了记不住。</div></div></div>
+          <div class="review-item"><div class="review-avatar">日</div><div class="review-body"><div class="r-name">日向不向日</div><div class="r-text">更新表如果能标一下单集时长就更好了，通勤路上得算着时间看。</div></div></div>
+        </div>
+      </section>
+
+      <!-- 板块9 相关资讯 -->
+      <section class="content-section" id="news">
+        <div class="section-head">
+          <h2>番剧与社区<span class="accent">相关资讯</span></h2>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <span class="news-date">2025-06-18</span>
+            <div class="news-body"><h4>本季新番更新表中期调整，两部作品延期一周</h4><p>排期变动涉及周末档，追更用户可留意更新日历的同步调整。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025-06-15</span>
+            <div class="news-body"><h4>弹幕礼仪指南更新：剧透屏蔽词库扩充</h4><p>新增常见剧情关键词，首播当晚的弹幕环境有所改善。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025-06-12</span>
+            <div class="news-body"><h4>国创动画集中上线，周末补番选择增加</h4><p>多部国创采用首集连播模式，适合周末一次性观看。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025-06-09</span>
+            <div class="news-body"><h4>完结番专题：适合一口气补完的长篇作品</h4><p>芙莉莲、史莱姆等长篇完结或阶段性完结作品进入补番推荐。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025-06-05</span>
+            <div class="news-body"><h4>通勤追番场景调查：24 分钟单集最受欢迎</h4><p>短篇周更番在碎片时间观看中占比最高，节奏稳定是关键。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025-06-01</span>
+            <div class="news-body"><h4>弹幕社区氛围对比：热门番与冷门番差异明显</h4><p>高密度弹幕区适合实时讨论，低密度区更适合剧情考据。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块10 相关推荐 -->
+      <section class="content-section" id="tags">
+        <div class="section-head">
+          <h2>按方向<span class="accent">找内容</span></h2>
+          <span class="sub">可搜索的具体方向词</span>
+        </div>
+        <div class="tag-index">
+          <a href="/#hot">本季新番更新表</a>
+          <a href="/#hot">完结番补番清单</a>
+          <a href="/#hot">通勤短篇番</a>
+          <a href="/#hot">睡前治愈番</a>
+          <a href="/#hot">周末连看国创</a>
+          <a href="/#hot">悬疑推理番推荐</a>
+          <a href="/#hot">弹幕氛围好的番</a>
+          <a href="/#hot">漫画改编新番</a>
+        </div>
+      </section>
+
+      <!-- 板块11 精选时间线 -->
+      <section class="content-section" id="timeline">
+        <div class="section-head">
+          <h2>本季追番<span class="accent">时间线精选</span></h2>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <span class="update-time">第1周</span>
+            <div class="update-body"><div class="u-title">新番首播集中期</div><div class="u-desc">多数作品放出第 1 话，适合试看后决定追更名单。</div></div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">第4周</span>
+            <div class="update-body"><div class="u-title">剧情进入主线</div><div class="u-desc">连载番完成铺垫，弹幕讨论热度上升，可参考评论决定是否继续。</div></div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">第8周</span>
+            <div class="update-body"><div class="u-title">中期调整与集中补番</div><div class="u-desc">部分作品进入高潮段落，漏看的用户可在此阶段集中补齐。</div></div>
+          </div>
+          <div class="update-item">
+            <span class="update-time">季末</span>
+            <div class="update-body"><div class="u-title">完结与续作公布</div><div class="u-desc">完结番进入补番推荐，续作消息开始释出，关注相关资讯。</div></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右栏 -->
+    <aside class="right-sidebar" aria-label="辅助阅读">
+      <div class="side-panel">
+        <h3>页内目录</h3>
+        <nav class="toc-list" aria-label="页内目录">
+          <a href="/#intro">内容简介</a>
+          <a href="/#hot">热门番剧推荐</a>
+          <a href="/#updates">新番更新表</a>
+          <a href="/#categories">分类入口</a>
+          <a href="/#deep">深度解析</a>
+          <a href="/#guide">追番指南</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#reviews">用户评论</a>
+          <a href="/#news">相关资讯</a>
+          <a href="/#tags">方向索引</a>
+          <a href="/#timeline">追番时间线</a>
+        </nav>
+      </div>
+      <div class="side-panel">
+        <h3>热门条目</h3>
+        <div class="hot-list">
+          <div class="hot-item"><span class="rank top">1</span><a href="/#hot">迷宫饭 第二季</a></div>
+          <div class="hot-item"><span class="rank top">2</span><a href="/#hot">葬送的芙莉莲</a></div>
+          <div class="hot-item"><span class="rank top">3</span><a href="/#hot">时光代理人 英都篇</a></div>
+          <div class="hot-item"><span class="rank">4</span><a href="/#hot">怪兽8号 第二季</a></div>
+          <div class="hot-item"><span class="rank">5</span><a href="/#hot">刺客伍六七 第五季</a></div>
+          <div class="hot-item"><span class="rank">6</span><a href="/#hot">药屋少女的呢喃</a></div>
+        </div>
+      </div>
+      <div class="side-panel">
+        <h3>延伸阅读</h3>
+        <div class="toc-list">
+          <a href="/#deep">更新节奏与追番选择</a>
+          <a href="/#deep">弹幕社区氛围对比</a>
+          <a href="/#guide">按场景筛选番剧</a>
+          <a href="/#faq">完结番与连载番怎么选</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="f-logo">Blibli</div>
+        <p>番剧更新、追番场景与弹幕社区文化内容门户。按类型、场景和更新节奏整理条目，帮助观众快速找到适合当下观看的作品。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容频道</h4>
+        <a href="/#hot">热门番剧</a>
+        <a href="/#updates">新番更新表</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deep">深度解析</a>
+      </div>
+      <div class="footer-col">
+        <h4>追番参考</h4>
+        <a href="/#guide">追番指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#reviews">用户评论</a>
+        <a href="/#timeline">追番时间线</a>
+      </div>
+      <div class="footer-col">
+        <h4>社区与资讯</h4>
+        <a href="/#news">相关资讯</a>
+        <a href="/#tags">方向索引</a>
+        <a href="/#deep">弹幕氛围</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Blibli 内容门户 · 示例页面</span>
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var typeFilters = document.querySelectorAll('#type-filters .filter-tag');
+    var sceneFilters = document.querySelectorAll('#scene-filters .filter-tag');
+    var cards = document.querySelectorAll('#hot-cards .content-card');
+    var currentType = 'all';
+    var currentScene = 'all';
+
+    function applyFilters() {
+      cards.forEach(function(card) {
+        var type = card.getAttribute('data-type');
+        var scene = card.getAttribute('data-scene');
+        var typeMatch = currentType === 'all' || type === currentType;
+        var sceneMatch = currentScene === 'all' || scene === currentScene;
+        card.style.display = (typeMatch && sceneMatch) ? '' : 'none';
+      });
+    }
+
+    typeFilters.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        typeFilters.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentType = btn.getAttribute('data-filter');
+        applyFilters();
+      });
+    });
+
+    sceneFilters.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        sceneFilters.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        currentScene = btn.getAttribute('data-scene');
+        applyFilters();
+      });
+    });
+  })();
+</script>
+</body>
+            </html>
